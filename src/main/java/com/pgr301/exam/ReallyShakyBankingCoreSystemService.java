@@ -23,10 +23,17 @@ import static java.util.Optional.ofNullable;
 @Component
 class ReallyShakyBankingCoreSystemService implements BankingCoreSystmeService {
 
+
+    private String kjeks = "kjeks";
+
+
     private Map<String, Account> theBank = new HashMap();
 
     @Override
     public void transfer(Transaction tx, String fromAccount, String toAccount) {
+        for (int i = 0; i < 10_000; i++) {
+            kjeks += "a";
+        }
         randomizedWait(2000);
         randomizeExceptionOrPanic(0.7f);
         Account from = getOrCreateAccount(fromAccount);
