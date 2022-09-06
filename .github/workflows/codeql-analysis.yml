@@ -7,13 +7,19 @@ on:
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
+
+    permissions:
+      # required for all workflows
+      security-events: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
+          languages: java
           queries: security-and-quality
 
       - name: Autobuild

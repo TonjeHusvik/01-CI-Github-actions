@@ -23,6 +23,10 @@ import static java.util.Optional.ofNullable;
 @Component
 class ReallyShakyBankingCoreSystemService implements BankingCoreSystmeService {
 
+
+    private String kjeks = "kjeks";
+
+
     private Map<String, Account> theBank = new HashMap();
 
     @Override
