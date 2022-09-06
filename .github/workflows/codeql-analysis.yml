@@ -6,13 +6,12 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
+    steps:
     - uses: github/codeql-action/init@v2
-  with:
-    db-location: '${{ github.workspace }}/codeql_dbs'
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['java']
-        
-    
+      with:
+        db-location: '${{ github.workspace }}/codeql_dbs'
+        strategy:
+          fail-fast: false
+          matrix:
+            language: ['java']
