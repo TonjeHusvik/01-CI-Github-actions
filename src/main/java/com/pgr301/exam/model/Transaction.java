@@ -6,7 +6,7 @@ import lombok.ToString;
 @ToString
 @Data
 public class Transaction {
-
+    private String password;
     private double amount;
 
 }
