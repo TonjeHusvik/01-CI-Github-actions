@@ -1,14 +1,21 @@
+name: Code scan
 on:
   push:
     branches: [main, protected]
   pull_request:
     branches: [main]
 jobs:
-  analyze:
-    name: Analyze
+  CodeQL-Build:
     runs-on: ubuntu-latest
     steps:
-    - uses: github/codeql-action/init@v2
-      with:
-        db-location: '${{ github.workspace }}/codeql_dbs'
-        languages: 'java'
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analyzis
+        uses: github/codeql-action/analyze@v2
