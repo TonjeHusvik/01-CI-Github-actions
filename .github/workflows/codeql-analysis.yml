@@ -1,0 +1,18 @@
+on:
+  push:
+    branches: [main, protected]
+  pull_request:
+    branches: [main]
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: [ubuntu-latest]
+    - uses: github/codeql-action/init@v2
+  with:
+    db-location: '${{ github.workspace }}/codeql_dbs'
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['java']
+        
+    
